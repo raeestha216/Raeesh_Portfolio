@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raeesh Joshi | Portfolio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+scroll-behavior:smooth;
+}
+
+html {
+scroll-padding-top: 80px;
+}
+
+body{
+background:#080b11;
+color:white;
+overflow-x:hidden;
+}
+
+.scroll-progress {
+position: fixed;
+top: 0;
+left: 0;
+height: 3px;
+background: linear-gradient(90deg, #00b7ff, #8e5cff);
+width: 0%;
+z-index: 1000;
+transition: width 0.1s ease;
+}
+
+.bg{
+position:fixed;
+inset:0;
+z-index:-2;
+background:
+radial-gradient(circle at 20% 20%, rgba(0,153,255,.25), transparent 30%),
+radial-gradient(circle at 80% 10%, rgba(155,89,255,.20), transparent 30%),
+radial-gradient(circle at 50% 80%, rgba(0,255,200,.12), transparent 40%),
+#080b11;
+}
+
+.blur{
+position:fixed;
+width:450px;
+height:450px;
+border-radius:50%;
+filter:blur(120px);
+opacity:.45;
+z-index:-1;
+animation:float 18s ease-in-out infinite;
+}
+
+.blur1{
+background:#008cff;
+top:-150px;
+left:-120px;
+}
+
+.blur2{
+background:#8f5cff;
+right:-120px;
+top:100px;
+animation-delay:5s;
+}
+
+@keyframes float{
+50%{
+transform:translateY(60px);
+}
+}
+
+nav{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+width:min(1100px,90%);
+padding:14px 24px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(8,11,17,.8);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.08);
+border-radius:22px;
+z-index:999;
+transition: all 0.3s ease;
+}
+
+nav.scrolled {
+background: rgba(8,11,17,.95);
+padding: 12px 24px;
+}
+
+.logo{
+font-weight:800;
+font-size:1.1rem;
+background: linear-gradient(90deg, #00b7ff, #8e5cff);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+cursor: pointer;
+transition: transform 0.3s ease;
+}
+
+.logo:hover {
+transform: scale(1.05);
+}
+
+nav ul{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:#d8d8d8;
+font-size:.95rem;
+position: relative;
+transition: color 0.3s ease;
+}
+
+nav a::after {
+content: '';
+position: absolute;
+bottom: -5px;
+left: 0;
+width: 0;
+height: 2px;
+background: linear-gradient(90deg, #00b7ff, #8e5cff);
+transition: width 0.3s ease;
+}
+
+nav a:hover{
+color:white;
+}
+
+nav a:hover::after {
+width: 100%;
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+display: none;
+flex-direction: column;
+gap: 6px;
+background: none;
+border: none;
+cursor: pointer;
+}
+
+.menu-toggle span {
+width: 25px;
+height: 2px;
+background: white;
+border-radius: 2px;
+transition: all 0.3s ease;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:120px 8% 60px;
+}
+
+.hero-grid{
+width:min(1200px,100%);
+display:grid;
+grid-template-columns:1.5fr 1fr;
+gap:30px;
+}
+
+.glass{
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.08);
+border-radius:30px;
+transition: all 0.3s ease;
+}
+
+.glass:hover {
+background:rgba(255,255,255,.09);
+border-color:rgba(255,255,255,.15);
+transform: translateY(-4px);
+}
+
+.hero-main{
+padding:60px;
+animation: slideInLeft 0.8s ease-out;
+}
+
+.tag{
+display:inline-block;
+padding:10px 18px;
+border-radius:999px;
+background:rgba(0,183,255,.15);
+border: 1px solid rgba(0,183,255,.3);
+margin-bottom:25px;
+font-size:.85rem;
+color: #00b7ff;
+animation: fadeInUp 0.6s ease-out;
+}
+
+.hero h1{
+font-size:4.5rem;
+line-height:1;
+margin-bottom:20px;
+animation: slideInLeft 0.8s ease-out 0.1s both;
+}
+
+.gradient{
+background:linear-gradient(90deg,#00b7ff,#8e5cff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+font-size:1.1rem;
+color:#b8c1d1;
+max-width:650px;
+line-height:1.8;
+animation: slideInLeft 0.8s ease-out 0.2s both;
+}
+
+.buttons{
+margin-top:35px;
+display:flex;
+gap:15px;
+animation: slideInLeft 0.8s ease-out 0.3s both;
+flex-wrap: wrap;
+}
+
+.btn{
+padding:15px 28px;
+border-radius:16px;
+text-decoration:none;
+font-weight:600;
+transition: all 0.3s ease;
+border: none;
+cursor: pointer;
+font-size: 1rem;
+}
+
+.primary{
+background:linear-gradient(135deg,#00b7ff,#8e5cff);
+color:white;
+box-shadow: 0 8px 24px rgba(0,183,255,0.3);
+}
+
+.primary:hover {
+transform: translateY(-3px);
+box-shadow: 0 12px 32px rgba(0,183,255,0.4);
+}
+
+.secondary{
+background:rgba(255,255,255,.08);
+color:white;
+border: 1px solid rgba(255,255,255,.2);
+}
+
+.secondary:hover {
+background:rgba(255,255,255,.12);
+border-color: rgba(255,255,255,.3);
+transform: translateY(-3px);
+}
+
+/* Side Widgets */
+.widgets{
+display:grid;
+gap:20px;
+}
+
+.widget{
+padding:24px;
+animation: fadeInRight 0.8s ease-out;
+}
+
+.widget:nth-child(2) {
+animation-delay: 0.1s;
+}
+
+.widget:nth-child(3) {
+animation-delay: 0.2s;
+}
+
+.widget h3{
+margin-bottom:10px;
+color: #b8c1d1;
+font-size: 0.9rem;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+.stat{
+font-size:2rem;
+font-weight:800;
+background:linear-gradient(90deg,#00b7ff,#8e5cff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom: 8px;
+}
+
+section{
+padding:100px 8%;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+.section-title{
+font-size:2.8rem;
+margin-bottom:50px;
+animation: slideInUp 0.6s ease-out;
+}
+
+.section-title::after {
+content: '';
+display: block;
+width: 60px;
+height: 4px;
+background: linear-gradient(90deg, #00b7ff, #8e5cff);
+margin-top: 15px;
+border-radius: 2px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.card{
+padding:30px;
+transition: all 0.3s ease;
+cursor: pointer;
+}
+
+.card:hover{
+transform:translateY(-12px);
+}
+
+.skill-item {
+display: flex;
+align-items: center;
+gap: 12px;
+padding: 16px;
+margin-bottom: 8px;
+border-radius: 12px;
+background: rgba(255,255,255,.03);
+transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+background: rgba(0,183,255,.15);
+transform: translateX(8px);
+}
+
+.skill-icon {
+width: 10px;
+height: 10px;
+border-radius: 50%;
+background: linear-gradient(90deg, #00b7ff, #8e5cff);
+}
+
+.project{
+padding:35px;
+position: relative;
+overflow: hidden;
+}
+
+.project::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(0,183,255,.1), transparent);
+transition: left 0.5s ease;
+}
+
+.project:hover::before {
+left: 100%;
+}
+
+.project h3{
+margin-bottom:10px;
+font-size: 1.3rem;
+transition: all 0.3s ease;
+position: relative;
+z-index: 1;
+}
+
+.project:hover h3 {
+color: #00b7ff;
+}
+
+.project p{
+color:#b8c1d1;
+line-height:1.7;
+position: relative;
+z-index: 1;
+}
+
+.project-meta {
+display: flex;
+gap: 12px;
+margin-top: 16px;
+flex-wrap: wrap;
+position: relative;
+z-index: 1;
+}
+
+.project-tag {
+font-size: 0.8rem;
+padding: 6px 12px;
+border-radius: 8px;
+background: rgba(0,183,255,.15);
+color: #00b7ff;
+border: 1px solid rgba(0,183,255,.2);
+}
+
+.about-content {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 40px;
+align-items: center;
+}
+
+.about-text {
+line-height: 2;
+color: #b8c1d1;
+font-size: 1.05rem;
+}
+
+.about-highlights {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 20px;
+}
+
+.highlight-item {
+padding: 20px;
+border-radius: 16px;
+background: rgba(0,183,255,.08);
+border: 1px solid rgba(0,183,255,.2);
+}
+
+.highlight-item h4 {
+color: #00b7ff;
+margin-bottom: 8px;
+font-size: 0.9rem;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+.contact-content {
+text-align: center;
+padding: 40px;
+}
+
+.contact-links {
+display: flex;
+justify-content: center;
+gap: 20px;
+margin-top: 25px;
+flex-wrap: wrap;
+}
+
+.contact-link {
+padding: 12px 24px;
+border-radius: 12px;
+background: rgba(255,255,255,.08);
+border: 1px solid rgba(255,255,255,.15);
+color: white;
+text-decoration: none;
+transition: all 0.3s ease;
+font-weight: 500;
+}
+
+.contact-link:hover {
+background: rgba(0,183,255,.15);
+border-color: rgba(0,183,255,.3);
+color: #00b7ff;
+}
+
+footer{
+padding:40px;
+text-align:center;
+color:#9aa6ba;
+border-top: 1px solid rgba(255,255,255,.08);
+font-size: 0.9rem;
+}
+
+@keyframes slideInLeft {
+from {
+opacity: 0;
+transform: translateX(-30px);
+}
+to {
+opacity: 1;
+transform: translateX(0);
+}
+}
+
+@keyframes slideInUp {
+from {
+opacity: 0;
+transform: translateY(30px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(10px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+@keyframes fadeInRight {
+from {
+opacity: 0;
+transform: translateX(30px);
+}
+to {
+opacity: 1;
+transform: translateX(0);
+}
+}
+
+@media (max-width: 768px) {
+.hero-grid {
+grid-template-columns: 1fr;
+}
+
+.hero-main {
+padding: 40px;
+}
+
+.hero h1 {
+font-size: 3rem;
+}
+
+.section-title {
+font-size: 2rem;
+}
+
+nav ul {
+gap: 15px;
+}
+
+nav a {
+font-size: 0.85rem;
+}
+
+.about-content {
+grid-template-columns: 1fr;
+gap: 20px;
+}
+
+.about-highlights {
+grid-template-columns: 1fr;
+}
+
+.menu-toggle {
+display: flex;
+}
+
+nav ul {
+display: none;
+position: absolute;
+top: 100%;
+left: 0;
+right: 0;
+flex-direction: column;
+background: rgba(8,11,17,.95);
+padding: 20px;
+border-radius: 16px;
+margin-top: 10px;
+border: 1px solid rgba(255,255,255,.08);
+}
+
+nav.active ul {
+display: flex;
+}
+
+.widget h3 {
+font-size: 0.8rem;
+}
+
+.stat {
+font-size: 1.5rem;
+}
+}
+
+@media (max-width: 480px) {
+section {
+padding: 60px 5%;
+}
+
+.hero {
+padding: 100px 5% 40px;
+}
+
+.hero h1 {
+font-size: 2.5rem;
+}
+
+.buttons {
+flex-direction: column;
+}
+
+.btn {
+width: 100%;
+text-align: center;
+}
+
+.cards {
+grid-template-columns: 1fr;
+}
+
+.section-title {
+font-size: 1.8rem;
+}
+
+.contact-links {
+flex-direction: column;
+}
+
+.contact-link {
+width: 100%;
+text-align: center;
+}
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="scroll-progress"></div>
+
+<div class="bg"></div>
+<div class="blur blur1"></div>
+<div class="blur blur2"></div>
+
+<nav id="navbar">
+<div class="logo">Raeesh</div>
+
+<button class="menu-toggle" id="menuToggle">
+<span></span>
+<span></span>
+<span></span>
+</button>
+
+<ul id="navMenu">
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+
+<div class="hero-grid">
+
+<div class="glass hero-main">
+
+<div class="tag">🇳🇵 Nepal • Creator • Developer</div>
+
+<h1>
+Raeesh
+<span class="gradient">Joshi</span>
+</h1>
+
+<p>
+I build digital experiences, create cinematic edits, explore mobile photography, 
+and experiment with technology, design, and storytelling.
+</p>
+
+<div class="buttons">
+<a href="#projects" class="btn primary">View Projects</a>
+<a href="#contact" class="btn secondary">Get in Touch</a>
+</div>
+
+</div>
+
+<div class="widgets">
+
+<div class="glass widget">
+<h3>Current Setup</h3>
+<div class="stat">S25 Ultra</div>
+<p>•Photography <br> •Content Creation</p>
+</div>
+
+<div class="glass widget">
+<h3>Laptop</h3>
+<div class="stat">Legion</div>
+<p>
+• Intel core i7 13650HX<br>• 8GB RTX 4060<br>• 24GB RAM<br>• Gen4 1TB SSD<br>
+</p>
+</div>
+
+<div class="glass widget">
+<h3>Interests</h3>
+<p>
+💻 Development<br>
+🎬 Editing<br>
+📸 Photography<br>
+🎮 Gaming
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<div class="container">
+
+<h2 class="section-title">About Me</h2>
+
+<div class="about-content">
+<div class="glass card">
+<p class="about-text">
+I'm a student and creator passionate about building beautiful digital experiences. I enjoy combining creativity with technology to craft websites and content that look great and feel intuitive. When I'm not coding, you'll find me exploring mobile photography or editing cinematic content.
+</p>
+</div>
+
+<div class="about-highlights">
+<div class="highlight-item">
+<h4>📚 Education</h4>
+<p><b>Westminster College</b> <br> -Bachelors (Hons) Computer Science</p>
+</div>
+<div class="highlight-item">
+<h4>🎯 Focus</h4>
+<p>Frontend Development & Design</p>
+</div>
+<div class="highlight-item">
+<h4>🌟 Passion</h4>
+<p>Creative Coding & Visual Arts</p>
+</div>
+<div class="highlight-item">
+<h4>🚀 Goal</h4>
+<p>Build meaningful digital products</p>
+</div>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section id="skills">
+
+<div class="container">
+
+<h2 class="section-title">Skills & Expertise</h2>
+
+<div class="cards">
+
+<div class="glass card">
+<h3>Development</h3>
+<div class="skill-item">
+<div class="skill-icon"></div>
+<span>HTML5 & Semantic Markup</span>
+</div>
+<div class="skill-item">
+<div class="skill-icon"></div>
+<span>CSS3 & Modern Layouts</span>
+</div>
+<div class="skill-item">
+<div class="skill-icon"></div>
+<span>JavaScript & Interactivity</span>
+</div>
+<div class="skill-item">
+<div class="skill-icon"></div>
+<span>Responsive Design</span>
+</div>
+</div>
+
+<div class="glass card">
+<h3>Tools & Platforms</h3>
+<div class="skill-item">
+<div class="skill-icon"></div>
+<span>Git & GitHub</span>
+</div>
+<div class="skill-item">
+<div class="skill-icon"></div>
+<span>VS Code & Development Tools</span>
+</div>
+<div class="skill-item">
+<div class="skill-icon"></div>
+<span>Figma & Design Tools</span>
+</div>
+<div class="skill-item">
+<div class="skill-icon"></div>
+<span>Command Line & Bash</span>
+</div>
+</div>
+
+<div class="glass card">
+<h3>Creative</h3>
+<div class="skill-item">
+<div class="skill-icon"></div>
+<span>Video Editing & Motion</span>
+</div>
+<div class="skill-item">
+<div class="skill-icon"></div>
+<span>Mobile Photography</span>
+</div>
+<div class="skill-item">
+<div class="skill-icon"></div>
+<span>UI/UX Design</span>
+</div>
+<div class="skill-item">
+<div class="skill-icon"></div>
+<span>Content Creation</span>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="projects">
+
+<div class="container">
+
+<h2 class="section-title">Featured Projects</h2>
+
+<div class="cards">
+
+<div class="glass project">
+<h3>Portfolio Website</h3>
+<p>
+A HyperOS-inspired personal portfolio featuring glassmorphism, smooth animations, and fully responsive design. Built with pure HTML, CSS, and vanilla JavaScript.
+</p>
+<div class="project-meta">
+<span class="project-tag">HTML5</span>
+<span class="project-tag">CSS3</span>
+<span class="project-tag">JavaScript</span>
+</div>
+</div>
+
+<div class="glass project">
+<h3>Marvel Cinematic Edit</h3>
+<p>
+A character-focused video edit synchronized with cinematic audio and storytelling-driven transitions. Explores narrative through visual sequencing and motion design.
+</p>
+<div class="project-meta">
+<span class="project-tag">Video Editing</span>
+<span class="project-tag">Motion Design</span>
+<span class="project-tag">Color Grading</span>
+</div>
+</div>
+
+<div class="glass project">
+<h3>Digital Sustainability Research</h3>
+<p>
+In-depth research into video streaming's environmental impact on data centers, examining digital carbon footprint and sustainable technology practices.
+</p>
+<div class="project-meta">
+<span class="project-tag">Research</span>
+<span class="project-tag">Sustainability</span>
+<span class="project-tag">Data Analysis</span>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<div class="container">
+
+<h2 class="section-title">Get In Touch</h2>
+
+<div class="glass contact-content">
+
+<p style="font-size: 1.1rem; color: #b8c1d1; margin-bottom: 10px;">
+Let's collaborate on something amazing
+</p>
+
+<div class="contact-links">
+<a href="mailto:raeeshjoshi@gmail.com" class="contact-link">📧 Email</a>
+<a href="https://github.com/raeestha216" target="_blank" class="contact-link">💻 GitHub</a>
+<a href="https://www.instagram.com/raeesh_restha/" target="_blank" class="contact-link">📸 Instagram</a>
+<a href="https://wa.me/9779767745815" target="_blank" class="contact-link">💬 WhatsApp</a>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+Designed with HyperOS aesthetic • Built with care • © 2026 Raeesh Joshi
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+const scrollTop = window.scrollY;
+const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+const scrollPercent = (scrollTop / docHeight) * 100;
+document.querySelector('.scroll-progress').style.width = scrollPercent + '%';
+
+const navbar = document.getElementById('navbar');
+if (scrollTop > 50) {
+navbar.classList.add('scrolled');
+} else {
+navbar.classList.remove('scrolled');
+}
+});
+
+const menuToggle = document.getElementById('menuToggle');
+const navMenu = document.getElementById('navMenu');
+const navbar = document.getElementById('navbar');
+
+menuToggle.addEventListener('click', () => {
+navbar.classList.toggle('active');
+});
+
+document.querySelectorAll('#navMenu a').forEach(link => {
+link.addEventListener('click', () => {
+navbar.classList.remove('active');
+});
+});
+
+const observerOptions = {
+threshold: 0.1,
+rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.style.animation = entry.target.style.animation;
+}
+});
+}, observerOptions);
+
+document.querySelectorAll('section').forEach(section => {
+observer.observe(section);
+});
+</script>
+
+</body>
+</html>
